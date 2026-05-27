@@ -14,7 +14,7 @@ when:
     match:
       - ^images/{{ .step }}/
   action:
-    include: ["images:docker.io%2Freeveci%2F{{ .step }}:build"]
+    include: ["images:docker.io/reeveci/{{ .step }}:build"]
 
 steps:
   - name: load env
