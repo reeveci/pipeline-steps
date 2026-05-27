@@ -1,0 +1,38 @@
+---
+type: pipeline
+name: build image - docker.io/reeveci/{{ .step }}
+
+when:
+  workerGroup:
+    include: [soldier]
+  trigger:
+    include: [commit, action]
+  file:
+    include:
+      - config/{{ .step }}.env
+      - .reeve/build-image.yaml.tmpl
+    match:
+      - ^images/{{ .step }}/
+  action:
+    include: ["images:reeveci:{{ .step }}:build"]
+
+steps:
+  - name: load env
+    task: "@reeve/load-env-file"
+    params:
+      FILES: config/{{ .step }}.env
+      LOAD_ALL: "true"
+
+  - name: build image - docker.io/reeveci/{{ .step }}
+    task: "@docker/build"
+    params:
+      DOCKER_LOGIN_REGISTRIES: { env: docker/hub/reeve/login }
+      NAME: docker.io/reeveci/{{ .step }}
+      TAG: { var: STEP_VERSION }
+      CONTEXT: images/{{ step }}
+      PLATFORM: amd64,arm64
+      BUILD_DRIVER: docker-container
+      BUILD_ARGS: "{{ .buildParams | keys | join ` ` }}"
+      {{ range $param, $value := .buildParams -}}
+      {{ toJson $param }}: {{ toJson $value }}
+      {{ end -}}
