@@ -1,6 +1,6 @@
 FROM alpine
 
-RUN apk add openssh sshpass
+RUN apk add --no-cache openssh sshpass
 COPY --chmod=755 docker-entrypoint.sh /usr/local/bin/
 
 # SSH_LOGIN_USER: SSH user

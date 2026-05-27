@@ -1,6 +1,6 @@
 FROM alpine
 
-RUN apk add jq
+RUN apk add --no-cache jq
 COPY --chmod=755 docker-entrypoint.sh /usr/local/bin/
 
 # FILE: name of the package.json file

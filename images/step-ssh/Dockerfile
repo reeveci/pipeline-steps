@@ -9,7 +9,7 @@ RUN go build -o /usr/local/bin/load-reeve-env .
 
 FROM alpine
 
-RUN apk add openssh sshpass
+RUN apk add --no-cache openssh sshpass
 COPY --chmod=755 --from=builder /usr/local/bin/load-reeve-env /usr/local/bin/
 COPY --chmod=755 docker-entrypoint.sh /usr/local/bin/
 

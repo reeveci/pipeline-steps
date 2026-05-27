@@ -11,7 +11,7 @@ RUN go build -o /usr/local/bin/reeve-step .
 
 FROM docker:${DOCKER_VERSION}
 
-RUN apk add jq
+RUN apk add --no-cache jq
 COPY --chmod=755 --from=builder /usr/local/bin/reeve-step /usr/local/bin/
 
 WORKDIR /reeve/src

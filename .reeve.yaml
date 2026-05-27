@@ -37,6 +37,12 @@ templateData:
 type: include
 path: .reeve/build-step-image.yaml.tmpl
 templateData:
+  step: step-envsubst
+
+---
+type: include
+path: .reeve/build-step-image.yaml.tmpl
+templateData:
   step: step-file-revision
   buildParams:
     DOCKER_VERSION: { var: DOCKER_VERSION }
