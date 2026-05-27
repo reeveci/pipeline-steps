@@ -29,7 +29,7 @@ steps:
       DOCKER_LOGIN_REGISTRIES: { env: docker/hub/reeve/login }
       NAME: docker.io/reeveci/{{ .step }}
       TAG: { var: STEP_VERSION }
-      CONTEXT: images/{{ step }}
+      CONTEXT: images/{{ .step }}
       PLATFORM: amd64,arm64
       BUILD_DRIVER: docker-container
       BUILD_ARGS: "{{ .buildParams | keys | join ` ` }}"
