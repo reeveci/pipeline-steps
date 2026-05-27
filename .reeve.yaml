@@ -81,6 +81,12 @@ templateData:
 type: include
 path: .reeve/build-step-image.yaml.tmpl
 templateData:
+  step: step-notify
+
+---
+type: include
+path: .reeve/build-step-image.yaml.tmpl
+templateData:
   step: step-npm-cli
 
 ---
