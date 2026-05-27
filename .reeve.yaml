@@ -6,3 +6,9 @@ templateData:
   buildParams:
     DOCKER_VERSION: { var: DOCKER_VERSION }
     REEVE_TOOLS_VERSION: { var: REEVE_TOOLS_VERSION }
+
+---
+type: include
+path: .reeve/build-step-image.yaml.tmpl
+templateData:
+  step: step-load-env-file
