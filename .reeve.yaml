@@ -11,4 +11,94 @@ templateData:
 type: include
 path: .reeve/build-step-image.yaml.tmpl
 templateData:
+  step: step-docker-cli
+  buildParams:
+    DOCKER_VERSION: { var: DOCKER_VERSION }
+    REEVE_TOOLS_VERSION: { var: REEVE_TOOLS_VERSION }
+
+---
+type: include
+path: .reeve/build-step-image.yaml.tmpl
+templateData:
+  step: step-docker-deploy
+  buildParams:
+    DOCKER_VERSION: { var: DOCKER_VERSION }
+    REEVE_TOOLS_VERSION: { var: REEVE_TOOLS_VERSION }
+
+---
+type: include
+path: .reeve/build-step-image.yaml.tmpl
+templateData:
+  step: step-docker-secrets
+  buildParams:
+    DOCKER_VERSION: { var: DOCKER_VERSION }
+
+---
+type: include
+path: .reeve/build-step-image.yaml.tmpl
+templateData:
+  step: step-file-revision
+  buildParams:
+    DOCKER_VERSION: { var: DOCKER_VERSION }
+
+---
+type: include
+path: .reeve/build-step-image.yaml.tmpl
+templateData:
+  step: step-forgejo-test-package
+
+---
+type: include
+path: .reeve/build-step-image.yaml.tmpl
+templateData:
+  step: step-forgejo-upload-package
+
+---
+type: include
+path: .reeve/build-step-image.yaml.tmpl
+templateData:
+  step: step-git-select-tag
+
+---
+type: include
+path: .reeve/build-step-image.yaml.tmpl
+templateData:
   step: step-load-env-file
+
+---
+type: include
+path: .reeve/build-step-image.yaml.tmpl
+templateData:
+  step: step-node-get-package-version
+
+---
+type: include
+path: .reeve/build-step-image.yaml.tmpl
+templateData:
+  step: step-npm-cli
+
+---
+type: include
+path: .reeve/build-step-image.yaml.tmpl
+templateData:
+  step: step-npm-publish
+
+---
+type: include
+path: .reeve/build-step-image.yaml.tmpl
+templateData:
+  step: step-reeve-cli
+  buildParams:
+    REEVE_CLI_VERSION: { var: REEVE_CLI_VERSION }
+
+---
+type: include
+path: .reeve/build-step-image.yaml.tmpl
+templateData:
+  step: step-sftp
+
+---
+type: include
+path: .reeve/build-step-image.yaml.tmpl
+templateData:
+  step: step-ssh
